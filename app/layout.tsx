@@ -1,5 +1,5 @@
 "use client";
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '../components/Sidebar';
 // import Sidebar from '../components/Sidebar';
 import './globals.css';
 import { SolanaWalletProvider } from "@/components/WalletProvider";
