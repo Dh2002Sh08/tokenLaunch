@@ -1,8 +1,9 @@
 "use client";
-import Sidebar from '../components/sideBar';
+import Sidebar from '@/components/Sidebar';
+// import Sidebar from '../components/Sidebar';
 import './globals.css';
 import { SolanaWalletProvider } from "@/components/WalletProvider";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Particle {
   x: number;
@@ -17,7 +18,7 @@ interface Particle {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
-
+  const [activeTab, setActiveTab] = useState('home');
   // Canvas particle effect
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -119,7 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <SolanaWalletProvider>
           <div className="flex min-h-screen bg-transparent text-white">
-            <Sidebar />
+          <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
             <main className="flex-1 p-6 md:p-8 overflow-auto hover:shake">
               {children}
             </main>
